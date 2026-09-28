@@ -1,3 +1,1 @@
-Git commit plan
-
-Real repository commits cover project initialization, schema, JDBC, authentication, inventory, suppliers, users, POS, transactional checkout, reports and documentation/testing.
+Database schema stage completed: users, suppliers, medicines, sales and sale_items tables with foreign keys and sample data.
