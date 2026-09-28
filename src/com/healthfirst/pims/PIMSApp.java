@@ -17,7 +17,7 @@ public class PIMSApp {
     public static void main(String[] args){
         SwingUtilities.invokeLater(()->{
             try{db=new DB(); login();}catch(SQLException e){
-                JOptionPane.showMessageDialog(null,"Unable to connect to MySQL.\nConfigure PIMS_DB_URL, PIMS_DB_USER and PIMS_DB_PASSWORD, then run database.sql.\n\n"+e.getMessage(),"Database error",0);
+                JOptionPane.showMessageDialog(null,"Unable to start the local PIMS database.\nThe application creates its own database automatically.\n\n"+e.getMessage(),"Database error",0);
                 System.exit(1);
             }
         });
@@ -80,7 +80,7 @@ public class PIMSApp {
         Connection c;
         DB() throws SQLException {
             try { Class.forName("org.sqlite.JDBC"); } catch (ClassNotFoundException e) { throw new SQLException("SQLite driver unavailable", e); }
-            c=DriverManager.getConnection("jdbc:sqlite:pims.db");
+            String dir=System.getProperty("user.home")+java.io.File.separator+"HealthFirstPIMS"; new java.io.File(dir).mkdirs(); c=DriverManager.getConnection("jdbc:sqlite:"+dir+java.io.File.separator+"pims.db");
             c.setAutoCommit(true);
             init();
         }
