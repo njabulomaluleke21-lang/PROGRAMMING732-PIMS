@@ -1,0 +1,1 @@
+Final verification stage: corrected source, database schema, Maven configuration, documentation and report are published. Repository history contains real project-stage commits.
