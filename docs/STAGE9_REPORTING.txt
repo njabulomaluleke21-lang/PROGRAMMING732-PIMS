@@ -1,0 +1,1 @@
+Reporting stage: four live MySQL reports are included — Sales, Item-Wise, Low Stock and Expiry. Reports read current database records.
