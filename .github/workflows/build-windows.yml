@@ -22,11 +22,22 @@ jobs:
       - name: Build application
         run: mvn -B clean package
 
+      - name: Prepare clean application input
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path package-input | Out-Null
+          Copy-Item target\\pims-1.0.0.jar package-input\\pims-1.0.0.jar
+
+      - name: Create lean Java runtime
+        shell: pwsh
+        run: |
+          jlink --add-modules java.base,java.desktop,java.sql,java.logging,java.naming,java.management,java.xml,jdk.crypto.ec,jdk.unsupported --strip-debug --no-header-files --no-man-pages --compress=2 --output custom-runtime
+
       - name: Package self-contained Windows application
         shell: pwsh
         run: |
           New-Item -ItemType Directory -Force -Path dist | Out-Null
-          jpackage --type app-image --input target --name HealthFirstPIMS --main-jar pims-1.0.0.jar --main-class com.healthfirst.pims.PIMSApp --dest dist
+          jpackage --type app-image --input package-input --name HealthFirstPIMS --main-jar pims-1.0.0.jar --main-class com.healthfirst.pims.PIMSApp --runtime-image custom-runtime --dest dist
 
       - name: Zip application
         shell: pwsh
