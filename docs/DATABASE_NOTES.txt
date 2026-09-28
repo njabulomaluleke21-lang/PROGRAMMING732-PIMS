@@ -1,4 +1,1 @@
-Database notes
-
-Tables: users, suppliers, medicines, sales and sale_items.
-Checkout uses a database transaction and SELECT ... FOR UPDATE stock locking.
+JDBC configuration stage completed: MySQL connection settings are read from environment variables or system properties. Prepared statements are used for database operations.
