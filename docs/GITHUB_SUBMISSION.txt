@@ -1,5 +1,1 @@
-GitHub submission
-
-Repository: njabulomaluleke21-lang/PROGRAMMING732-PIMS
-The repository is public. Source, SQL, Maven configuration, documentation and report are included.
-Only real commits are used in the final history.
+Management stage completed: administrator workflows include supplier records and creation of Admin/Cashier users in MySQL.
