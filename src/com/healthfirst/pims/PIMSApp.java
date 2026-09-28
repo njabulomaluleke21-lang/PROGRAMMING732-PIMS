@@ -129,4 +129,3 @@ public class PIMSApp {
         java.util.List<Object[]> expiry()throws SQLException{return query("SELECT name,expiry_date,julianday(expiry_date)-julianday('now') FROM medicines ORDER BY expiry_date");}
     }
 }
-}
