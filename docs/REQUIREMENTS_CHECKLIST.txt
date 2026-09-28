@@ -1,13 +1,1 @@
-Requirements checklist
-
-[x] Login and role-based access
-[x] Cashier POS and billing
-[x] Medicine management
-[x] Supplier management
-[x] User management
-[x] Four reports
-[x] MySQL schema and sample data
-[x] JDBC operations
-[x] Transactional checkout
-[x] Maven build
-[x] Windows build script
+Inventory stage completed: medicine records, supplier relationships, stock levels, reorder levels and expiry dates are database-backed.
