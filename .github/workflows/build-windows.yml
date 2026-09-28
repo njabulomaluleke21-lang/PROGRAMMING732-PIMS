@@ -1,0 +1,41 @@
+name: Build Windows PIMS
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+
+      - name: Build application
+        run: mvn -B clean package
+
+      - name: Package self-contained Windows application
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path dist | Out-Null
+          jpackage --type app-image --input target --name HealthFirstPIMS --main-jar pims-1.0.0.jar --main-class com.healthfirst.pims.PIMSApp --dest dist
+
+      - name: Zip application
+        shell: pwsh
+        run: |
+          Compress-Archive -Path dist/HealthFirstPIMS -DestinationPath dist/HealthFirstPIMS-Windows.zip
+
+      - name: Upload Windows application
+        uses: actions/upload-artifact@v4
+        with:
+          name: HealthFirstPIMS-Windows
+          path: dist/HealthFirstPIMS-Windows.zip
+          if-no-files-found: error
