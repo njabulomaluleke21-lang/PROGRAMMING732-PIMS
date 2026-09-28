@@ -1,0 +1,3 @@
+PIMS_DB_URL=jdbc:mysql://localhost:3306/pims?serverTimezone=UTC
+PIMS_DB_USER=root
+PIMS_DB_PASSWORD=

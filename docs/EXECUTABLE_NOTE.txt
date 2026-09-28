@@ -1,0 +1,3 @@
+Build with: mvn clean package
+Runnable shaded JAR: target/pims-1.0.0.jar
+Windows helper copies it to dist/njabs_pims.jar.

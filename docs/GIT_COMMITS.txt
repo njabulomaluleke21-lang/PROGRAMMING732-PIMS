@@ -1,0 +1,3 @@
+Git commit plan
+
+Real repository commits cover project initialization, schema, JDBC, authentication, inventory, suppliers, users, POS, transactional checkout, reports and documentation/testing.

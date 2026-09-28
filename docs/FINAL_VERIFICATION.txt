@@ -1,0 +1,9 @@
+Final verification
+
+- Database-backed login implemented.
+- No in-memory demo database fallback.
+- Sales and stock changes are transactional.
+- Reports query MySQL.
+- ScreenshotGenerator.java removed.
+- Maven configuration includes MySQL Connector/J.
+- Live screenshots must be captured from the corrected MySQL-backed application.
