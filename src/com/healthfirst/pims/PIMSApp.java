@@ -62,7 +62,7 @@ public class PIMSApp {
     static JPanel reports(){
         JPanel p=new JPanel(new GridLayout(2,2,8,8));p.add(report("Sales Report",()->db.sales(),new String[]{"Sale ID","Date","Total","Cashier"}));p.add(report("Item-Wise Report",()->db.itemWise(),new String[]{"Medicine","Qty","Revenue"}));p.add(report("Low Stock Report",()->db.lowStock(),new String[]{"Medicine","Stock","Reorder"}));p.add(report("Expiry Report",()->db.expiry(),new String[]{"Medicine","Expiry","Days Left"}));return p;
     }
-    interface Rows{List<Object[]> get() throws Exception;}
+    interface Rows{java.util.List<Object[]> get() throws Exception;}
     static JPanel report(String title,Rows rows,String[] cols){JPanel p=new JPanel(new BorderLayout());p.add(new JLabel(title),BorderLayout.NORTH);DefaultTableModel m=new DefaultTableModel(cols,0);p.add(new JScrollPane(new JTable(m)));try{for(Object[] r:rows.get())m.addRow(r);}catch(Exception e){err(e);}return p;}
     static void cashier(User user){
         JPanel p=new JPanel(new BorderLayout(8,8));DefaultTableModel m=new DefaultTableModel(new String[]{"Medicine","Price","Stock","Qty"},0);JTable table=new JTable(m);
